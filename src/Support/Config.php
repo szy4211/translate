@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Szy4211\Translate\Support;
 
 class Config implements \ArrayAccess
@@ -11,8 +20,6 @@ class Config implements \ArrayAccess
 
     /**
      * Config constructor.
-     *
-     * @param array $config
      */
     public function __construct(array $config)
     {
@@ -20,7 +27,7 @@ class Config implements \ArrayAccess
     }
 
     /**
-     * Get config
+     * Get config.
      *
      * @param      $key
      * @param null $default
@@ -49,7 +56,7 @@ class Config implements \ArrayAccess
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function offsetExists($offset)
     {
@@ -57,7 +64,7 @@ class Config implements \ArrayAccess
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function offsetGet($offset)
     {
@@ -65,7 +72,7 @@ class Config implements \ArrayAccess
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function offsetSet($offset, $value)
     {
@@ -75,7 +82,7 @@ class Config implements \ArrayAccess
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function offsetUnset($offset)
     {

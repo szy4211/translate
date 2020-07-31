@@ -1,7 +1,15 @@
 <?php
 
-namespace Szy4211\Translate\Tests;
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
+namespace Szy4211\Translate\Tests;
 
 use Szy4211\Translate\Contracts\GatewayInterface;
 use Szy4211\Translate\Contracts\MessageInterface;
@@ -26,7 +34,7 @@ class TranslateTest extends TestCase
     public function testDefaultGateway()
     {
         $translate = new Translate([
-            'default' => 'test_default'
+            'default' => 'test_default',
         ]);
 
         $this->expectException(InvalidArgumentException::class);
@@ -37,7 +45,7 @@ class TranslateTest extends TestCase
 
     public function testFormatGatewayName()
     {
-        $translate = \Mockery::mock(Translate::class . '[formatGatewayName]', [[]])
+        $translate = \Mockery::mock(Translate::class.'[formatGatewayName]', [[]])
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
@@ -48,18 +56,16 @@ class TranslateTest extends TestCase
     public function testTranslate()
     {
         $gateway = new TestGateway();
-        $translate = \Mockery::mock(Translate::class . '[gateway]', [[]]);
+        $translate = \Mockery::mock(Translate::class.'[gateway]', [[]]);
         $translate->shouldReceive('gateway')->andReturn($gateway);
 
         $transResult = $translate->translate('test');
         $this->assertSame($transResult->getDstMessage(), 'test');
-
     }
 }
 
 class TestGateway implements GatewayInterface
 {
-
     public function getName(): string
     {
         return 'test';

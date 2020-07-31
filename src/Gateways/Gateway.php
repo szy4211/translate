@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Szy4211\Translate\Gateways;
 
 use Szy4211\Translate\Contracts\GatewayInterface;
@@ -7,10 +16,7 @@ use Szy4211\Translate\Support\Config;
 use Szy4211\Translate\Traits\HttpRequest;
 
 /**
- * Class Gateway
- *
- *
- * @package Szy4211\Translate\Gateways
+ * Class Gateway.
  */
 abstract class Gateway implements GatewayInterface
 {
@@ -29,7 +35,7 @@ abstract class Gateway implements GatewayInterface
     }
 
     /**
-     * Get config
+     * Get config.
      *
      * @return Config
      */
@@ -39,9 +45,7 @@ abstract class Gateway implements GatewayInterface
     }
 
     /**
-     * Set config
-     *
-     * @param array $config
+     * Set config.
      *
      * @return $this
      */
@@ -57,34 +61,34 @@ abstract class Gateway implements GatewayInterface
      */
     public function getHttpOptions()
     {
-        return (array)$this->config->get('http_options', []);
+        return (array) $this->config->get('http_options', []);
     }
 
     /**
-     * Get base uri
+     * Get base uri.
      *
      * @return string
      */
     public function getHttpBaseUri()
     {
-        return (string)$this->config->get('http_base_uri', '');
+        return (string) $this->config->get('http_base_uri', '');
     }
 
     /**
-     * Get Timeout
+     * Get Timeout.
      *
      * @return float
      */
     public function getHttpTimeout()
     {
-        return (float)$this->config->get('http_timeout', self::DEFAULT_HTTP_TIMEOUT);
+        return (float) $this->config->get('http_timeout', self::DEFAULT_HTTP_TIMEOUT);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getName(): string
     {
-        return strtolower(str_replace([__NAMESPACE__ . '\\', 'Gateway'], '', get_class($this)));
+        return strtolower(str_replace([__NAMESPACE__.'\\', 'Gateway'], '', get_class($this)));
     }
 }

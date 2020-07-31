@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Szy4211\Translate\Gateways;
 
 use Szy4211\Translate\Contracts\MessageInterface;
@@ -10,9 +19,8 @@ use Szy4211\Translate\Support\Str;
 use Szy4211\Translate\TransResult;
 
 /**
- * Class BaiduGateway
+ * Class BaiduGateway.
  *
- * @package Szy4211\Translate\Gateways
  * @see     https://api.fanyi.baidu.com/doc/21
  */
 class BaiduGateway extends Gateway
@@ -22,7 +30,7 @@ class BaiduGateway extends Gateway
     const MAX_QUERY_LENGTH = 6000;
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function translate(MessageInterface $message): TransResultInterface
     {
@@ -41,36 +49,30 @@ class BaiduGateway extends Gateway
     }
 
     /**
-     * Build params
-     *
-     * @param MessageInterface $message
+     * Build params.
      *
      * @return array
+     *
      * @throws \Exception
      */
     protected function buildParams(MessageInterface $message)
     {
-        $appId     = $this->config->get('app_id');
+        $appId = $this->config->get('app_id');
         $appSecret = $this->config->get('app_secret');
-        $salt      = Str::random();
+        $salt = Str::random();
 
         return [
-            'q'     => $message->getQueryMessage(),
-            'from'  => $message->getFromLang(),
-            'to'    => $message->getToLang(),
+            'q' => $message->getQueryMessage(),
+            'from' => $message->getFromLang(),
+            'to' => $message->getToLang(),
             'appid' => $appId,
-            'salt'  => $salt,
-            'sign'  => $this->makeSign($appId, $appSecret, $message->getQueryMessage(), $salt),
+            'salt' => $salt,
+            'sign' => $this->makeSign($appId, $appSecret, $message->getQueryMessage(), $salt),
         ];
     }
 
     /**
-     * Make sign
-     *
-     * @param string $appId
-     * @param string $appSecret
-     * @param string $query
-     * @param string $salt
+     * Make sign.
      *
      * @return string
      */
