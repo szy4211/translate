@@ -13,8 +13,8 @@ namespace Szy4211\Translate\Gateways;
 
 use Szy4211\Translate\Contracts\MessageInterface;
 use Szy4211\Translate\Contracts\TransResultInterface;
-use Szy4211\Translate\Exceptions\InvalidArgumentException;
 use Szy4211\Translate\Exceptions\GatewayErrorException;
+use Szy4211\Translate\Exceptions\InvalidArgumentException;
 use Szy4211\Translate\Support\Str;
 use Szy4211\Translate\TransResult;
 
