@@ -1,7 +1,15 @@
 <h1 align="center"> Translate </h1>
 
-<p align="center"> 文本翻译 SDK.</p>
+<p> 文本翻译 SDK.</p>
 
+<p align="center">
+<a href="https://travis-ci.org/szy4211/translate"><img src="https://travis-ci.org/szy4211/translate.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.styleci.io/repos/283954079"><img src="https://github.styleci.io/repos/283954079/shield" alt="StyleCI build status"></a>
+<a href="https://packagist.org/packages/szy4211/translate"><img src="https://poser.pugx.org/szy4211/translate/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/szy4211/translate"><img src="https://poser.pugx.org/szy4211/translate/v/unstable.svg" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/szy4211/translate"><img src="https://poser.pugx.org/szy4211/translate/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/szy4211/translate"><img src="https://poser.pugx.org/szy4211/translate/license" alt="License"></a>
+</p>
 
 ## 安装
 
