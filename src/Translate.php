@@ -1,7 +1,15 @@
 <?php
 
-namespace Szy4211\Translate;
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
+namespace Szy4211\Translate;
 
 use Szy4211\Translate\Contracts\GatewayInterface;
 use Szy4211\Translate\Contracts\TransResultInterface;
@@ -9,9 +17,7 @@ use Szy4211\Translate\Exceptions\InvalidArgumentException;
 use Szy4211\Translate\Support\Config;
 
 /**
- * Class Translate
- *
- * @package Szy4211\Translate
+ * Class Translate.
  */
 class Translate
 {
@@ -26,19 +32,15 @@ class Translate
 
     /**
      * Translate constructor.
-     *
-     * @param array $config
      */
     public function __construct(array $config)
     {
-        $this->config      = new Config($config);
+        $this->config = new Config($config);
         $this->gatewayName = $this->config->get('default', '');
     }
 
     /**
-     * Set gateway name
-     *
-     * @param string $gatewayName
+     * Set gateway name.
      *
      * @return $this
      */
@@ -50,14 +52,10 @@ class Translate
     }
 
     /**
-     * Translate
-     *
-     * @param string $query
-     * @param string $toLang
-     * @param string $fromLang
-     * @param string $formatType
+     * Translate.
      *
      * @return TransResultInterface
+     *
      * @throws InvalidArgumentException
      */
     public function translate(string $query, string $toLang = 'zh', string $fromLang = 'auto', string $formatType = 'text')
@@ -66,16 +64,17 @@ class Translate
 
         return $gateway->translate(new Message([
             'queryMessage' => $query,
-            'toLang'       => $toLang,
-            'fromLang'     => $fromLang,
-            'formatType'   => $formatType,
+            'toLang' => $toLang,
+            'fromLang' => $fromLang,
+            'formatType' => $formatType,
         ]));
     }
 
     /**
-     * Make gateway
+     * Make gateway.
      *
      * @return GatewayInterface
+     *
      * @throws InvalidArgumentException
      */
     public function gateway()
@@ -85,16 +84,13 @@ class Translate
             throw new InvalidArgumentException(sprintf('Class "%s" must be the gateway of translate.', $gateway));
         }
 
-        $config = array_merge($this->config->get('options', [])
-            , $this->config->get('gateways.' . $this->gatewayName, []));
+        $config = array_merge($this->config->get('options', []), $this->config->get('gateways.'.$this->gatewayName, []));
 
         return new $gateway($config);
     }
 
     /**
-     * Format gateway name
-     *
-     * @param string $gateway
+     * Format gateway name.
      *
      * @return string
      */
@@ -106,6 +102,6 @@ class Translate
 
         $gateway = ucfirst(str_replace(['-', '_', ' '], '', $gateway));
 
-        return __NAMESPACE__ . "\\Gateways\\{$gateway}Gateway";
+        return __NAMESPACE__."\\Gateways\\{$gateway}Gateway";
     }
 }

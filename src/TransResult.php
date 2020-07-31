@@ -1,10 +1,18 @@
 <?php
 
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Szy4211\Translate;
 
 use Szy4211\Translate\Contracts\MessageInterface;
 use Szy4211\Translate\Contracts\TransResultInterface;
-
 
 class TransResult implements TransResultInterface
 {
@@ -20,18 +28,15 @@ class TransResult implements TransResultInterface
 
     /**
      * TransResult constructor.
-     *
-     * @param MessageInterface $queryInstance
-     * @param string           $dstMessage
      */
     public function __construct(MessageInterface $queryInstance, string $dstMessage)
     {
         $this->queryInstance = $queryInstance;
-        $this->dstMessage    = $dstMessage;
+        $this->dstMessage = $dstMessage;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getQueryMessage(): string
     {
@@ -39,7 +44,7 @@ class TransResult implements TransResultInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getFromLang(): string
     {
@@ -47,7 +52,7 @@ class TransResult implements TransResultInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getToLang(): string
     {
@@ -55,7 +60,7 @@ class TransResult implements TransResultInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getFormatType(): string
     {
@@ -63,7 +68,7 @@ class TransResult implements TransResultInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getDstMessage(): string
     {
@@ -71,7 +76,7 @@ class TransResult implements TransResultInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getQueryInstance(): MessageInterface
     {

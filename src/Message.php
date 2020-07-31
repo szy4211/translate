@@ -1,15 +1,20 @@
 <?php
 
-namespace Szy4211\Translate;
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
+namespace Szy4211\Translate;
 
 use Szy4211\Translate\Contracts\MessageInterface;
 
 /**
- * Class Message
- *
- *
- * @package Szy4211\Translate
+ * Class Message.
  */
 class Message implements MessageInterface
 {
@@ -35,8 +40,6 @@ class Message implements MessageInterface
 
     /**
      * Message constructor.
-     *
-     * @param array $attributes
      */
     public function __construct(array $attributes = [])
     {
@@ -48,9 +51,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * Set query message
-     *
-     * @param string $queryMessage
+     * Set query message.
      *
      * @return $this
      */
@@ -62,9 +63,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * Set from language
-     *
-     * @param string $fromLang
+     * Set from language.
      *
      * @return $this
      */
@@ -76,9 +75,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * Set to language
-     *
-     * @param string $toLang
+     * Set to language.
      *
      * @return $this
      */
@@ -90,9 +87,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * Set format type
-     *
-     * @param string $formatType
+     * Set format type.
      *
      * @return $this
      */
@@ -104,7 +99,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getQueryMessage(): string
     {
@@ -112,7 +107,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getFromLang(): string
     {
@@ -120,7 +115,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getToLang(): string
     {
@@ -128,7 +123,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getFormatType(): string
     {

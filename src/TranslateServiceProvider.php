@@ -1,7 +1,15 @@
 <?php
 
-namespace Szy4211\Translate;
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
+namespace Szy4211\Translate;
 
 class TranslateServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -16,7 +24,7 @@ class TranslateServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         // publish config
         $this->publishes([
-            __DIR__ . '/../config/translate.php' => config_path('translate.php'),
+            __DIR__.'/../config/translate.php' => config_path('translate.php'),
         ]);
     }
 
