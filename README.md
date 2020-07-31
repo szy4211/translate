@@ -66,7 +66,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Szy4211\Translate\Translate;
 
-class WeatherController extends Controller
+class TranslateController extends Controller
 {
     public function show(Request $request, Translate $translate, $query)
     {
