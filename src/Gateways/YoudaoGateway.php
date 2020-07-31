@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Szy4211\Translate\Gateways;
 
 use Szy4211\Translate\Contracts\MessageInterface;
@@ -9,9 +18,8 @@ use Szy4211\Translate\Support\Str;
 use Szy4211\Translate\TransResult;
 
 /**
- * Class YoudaoGateway
+ * Class YoudaoGateway.
  *
- * @package Szy4211\Translate\Gateways
  * @see     https://ai.youdao.com/DOCSIRMA/html/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%BF%BB%E8%AF%91/API%E6%96%87%E6%A1%A3/%E6%96%87%E6%9C%AC%E7%BF%BB%E8%AF%91%E6%9C%8D%E5%8A%A1/%E6%96%87%E6%9C%AC%E7%BF%BB%E8%AF%91%E6%9C%8D%E5%8A%A1-API%E6%96%87%E6%A1%A3.html
  */
 class YoudaoGateway extends Gateway
@@ -21,7 +29,7 @@ class YoudaoGateway extends Gateway
     const SIGN_TYPE = 'v3';
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function translate(MessageInterface $message): TransResultInterface
     {
@@ -35,23 +43,22 @@ class YoudaoGateway extends Gateway
     }
 
     /**
-     * Build request params
-     *
-     * @param MessageInterface $message
+     * Build request params.
      *
      * @return array
+     *
      * @throws \Exception
      */
     private function buildParams(MessageInterface $message)
     {
         $params = [
-            'q'        => $message->getQueryMessage(),
-            'from'     => $message->getFromLang(),
-            'to'       => $message->getToLang(),
-            'appKey'   => $this->config->get('app_id'),
-            'salt'     => Str::random(),
+            'q' => $message->getQueryMessage(),
+            'from' => $message->getFromLang(),
+            'to' => $message->getToLang(),
+            'appKey' => $this->config->get('app_id'),
+            'salt' => Str::random(),
             'signType' => self::SIGN_TYPE,
-            'curtime'  => time()
+            'curtime' => time(),
         ];
 
         $params['sign'] = $this->makeSign(
@@ -65,12 +72,7 @@ class YoudaoGateway extends Gateway
     }
 
     /**
-     * Make sign
-     *
-     * @param string $appId
-     * @param string $query
-     * @param string $time
-     * @param string $salt
+     * Make sign.
      *
      * @return string
      */
@@ -79,24 +81,20 @@ class YoudaoGateway extends Gateway
         $appSecret = $this->config->get('app_secret');
 
         $input = $this->buildSignInput($query);
-        $str   = "{$appId}{$input}{$salt}{$time}{$appSecret}";
+        $str = "{$appId}{$input}{$salt}{$time}{$appSecret}";
 
-        return hash("sha256", $str);
+        return hash('sha256', $str);
     }
 
     /**
-     * Build sign input param
-     *
-     * @param string $query
-     *
-     * @return string
+     * Build sign input param.
      */
     private function buildSignInput(string $query): string
     {
         $len = strlen($query);
 
         return $len > 20
-            ? substr($query, 0, 10) . $len . substr($query, $len - 10, $len)
+            ? substr($query, 0, 10).$len.substr($query, $len - 10, $len)
             : $query;
     }
 }

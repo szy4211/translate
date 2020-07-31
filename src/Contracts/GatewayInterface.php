@@ -1,27 +1,28 @@
 <?php
 
+/*
+ * This file is part of the szy4211/translate.
+ *
+ * (c) zornshuai <zornshuai@foxmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Szy4211\Translate\Contracts;
 
 /**
- * Interface GatewayInterface
- *
- * @package Szy4211\Translate\Contracts
+ * Interface GatewayInterface.
  */
 interface GatewayInterface
 {
     /**
-     * Get gateway name
-     *
-     * @return string
+     * Get gateway name.
      */
     public function getName(): string;
 
     /**
-     * Translate
-     *
-     * @param MessageInterface $message
-     *
-     * @return TransResultInterface
+     * Translate.
      */
     public function translate(MessageInterface $message): TransResultInterface;
 }
